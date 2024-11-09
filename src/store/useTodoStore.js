@@ -3,8 +3,32 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const useTodoStore = create((set, get) => ({
     todos: [],
+
+    //- Add support for filter tabs;
+    filter: 'All',
+
+    setFilter: (filter) => set({ filter }),
+    
+    getFilteredTodos: () => {
+        const { todos, filter } = get();
+        if (filter === 'Active') {
+            return todos.filter((todo) => !todo.isCompleted);
+        } else if (filter === 'Completed') {
+            return todos.filter((todo) => todo.isCompleted);
+        } else {
+            return todos;
+        }
+    },
+//- Change add new todo for unique todo name;
     addTodo: (label) => {
         const {todos} = get();
+
+        const isDuplicate = todos.some((todo) => todo.label === label);
+
+        if (isDuplicate) {
+            console.log(`Todo with name ${label} already exists`);
+            return;
+        }
 
        const newTodo = {
            id: uuidv4(),
@@ -21,7 +45,7 @@ export const useTodoStore = create((set, get) => ({
     },
     updateTodo: (todo) => {
         const {todos} = get();
-
+        
         const newTodos = todos.map((todoItem) => {
             if(todo.id === todoItem.id) {
                 return todo;
@@ -43,6 +67,8 @@ export const useTodoStore = create((set, get) => ({
             todos: newTodos
         })
     },
+
+
     getUncompletedTodos: () => {
         const {todos} = get();
 
