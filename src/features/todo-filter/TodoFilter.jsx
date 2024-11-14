@@ -8,11 +8,11 @@ export default function TodoFilter() {
         filter,
         todos,
     } = useTodoStore();
-
+    
     const handleFilterChange = (newFilter) => {
         setFilter(newFilter);
     };
-
+    
     const uncompletedCount = todos.filter(todo => !todo.isCompleted).length;
 
     return (

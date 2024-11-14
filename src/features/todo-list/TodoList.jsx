@@ -24,6 +24,7 @@ export default function TodoList() {
 
     const handleToggleCompletedAllTodos = ({ target }) => {
         toggleCompleteAllTodos(target.checked);
+        // console.log("After toggling, are all todos completed?", isAllCompleted());
     };
 
     return (

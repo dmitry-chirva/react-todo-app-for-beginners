@@ -7,10 +7,14 @@ export const useTodoStore = create((set, get) => ({
     //- Add support for filter tabs;
     filter: 'All',
 
-    setFilter: (filter) => set({ filter }),
+    setFilter: (filter) => {
+        set({ filter });
+    },
     
     getFilteredTodos: () => {
-        const { todos, filter } = get();
+        // const { todos, filter } = get();
+        const todos = get().todos;
+        const filter = get().filter;
         if (filter === 'Active') {
             return todos.filter((todo) => !todo.isCompleted);
         } else if (filter === 'Completed') {
@@ -67,7 +71,6 @@ export const useTodoStore = create((set, get) => ({
             todos: newTodos
         })
     },
-
 
     getUncompletedTodos: () => {
         const {todos} = get();
