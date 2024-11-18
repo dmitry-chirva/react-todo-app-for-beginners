@@ -1,14 +1,15 @@
-import React, { useState, useRef } from "react";
-import {useTodoStore} from "../../store/useTodoStore";
+import { useState, useRef } from "react";
+
+// import { useTodoStore } from "../../store/useTodoStore";
+import { useTodoStore } from "../../todoprovider/TodoProvider";
 
 export default function AddTodos () {
-    const addTodo = useTodoStore(state => state.addTodo);
-    // const { addTodo } = useTodoStore();
+    // const addTodo = useTodoStore(state => state.addTodo);
+    const { addTodo } = useTodoStore();
     const [todoName, setTodoName] = useState("");
     const inputRef = useRef(null); //useRef - Task 3
 
     const handleChangeName = ({ target }) => {
-        console.log('Target: ', target)
         setTodoName(target.value);
     }
 

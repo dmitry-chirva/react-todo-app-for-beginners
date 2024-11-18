@@ -1,7 +1,9 @@
-import React from "react";
 import TodoItem from "./components/todo-item/TodoItem";
 import Toggle from "../../shared/components/Toggle";
-import { useTodoStore } from "../../store/useTodoStore";
+
+
+// import { useTodoStore } from "../../store/useTodoStore";
+import { useTodoStore } from "../../todoprovider/TodoProvider";
 
 export default function TodoList() {
     const {
@@ -22,14 +24,14 @@ export default function TodoList() {
         removeTodoById(id);
     };
 
-    const handleToggleCompletedAllTodos = ({ target }) => {
+    const handleToggleCompleteAllTodos = ({ target }) => {
         toggleCompleteAllTodos(target.checked);
-        // console.log("After toggling, are all todos completed?", isAllCompleted());
+        console.log("Target: ", target);
     };
 
     return (
         <>
-            <Toggle isChecked={isAllCompleted()} onChange={handleToggleCompletedAllTodos} />
+            <Toggle isChecked={isAllCompleted()} onChange={handleToggleCompleteAllTodos} />
             <ul className="todo-list">
                 {todos.map((todo) => (
                     <TodoItem

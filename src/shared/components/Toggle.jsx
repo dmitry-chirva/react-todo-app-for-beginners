@@ -8,7 +8,7 @@ export default function Toggle ({
         <>
             <input
                 id="todoAll"
-                // className="toggle-all"
+                className="toggle-all"
                 type="checkbox"
                 checked={isChecked}
                 onChange={onChange}

@@ -1,5 +1,5 @@
-import React from "react";
-import { useTodoStore } from "../../store/useTodoStore";
+// import { useTodoStore } from "../../store/useTodoStore";
+import { useTodoStore } from "../../todoprovider/TodoProvider";
 
 export default function TodoFilter() {
     const {

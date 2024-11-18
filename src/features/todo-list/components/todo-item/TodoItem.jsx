@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 
 /* TODO add focus for field after set edit mode */
 export default function TodoItem({

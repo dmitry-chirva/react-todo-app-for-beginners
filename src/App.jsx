@@ -3,8 +3,11 @@ import AddTodos from "./features/add-todos/AddTodos";
 import TodoList from "./features/todo-list/TodoList";
 import TodoFilter from "./features/todo-filter/TodoFilter";
 
+import { TodoProvider } from "./todoprovider/TodoProvider";
+
 function App() {
     return (
+        <TodoProvider>
         <div className="todoapp">
             <Header>
                 <AddTodos/>
@@ -14,6 +17,7 @@ function App() {
             </main>
             <TodoFilter />
         </div>
+        </TodoProvider>
     )
 }
 
